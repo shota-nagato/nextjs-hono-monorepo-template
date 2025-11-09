@@ -11,6 +11,8 @@
     "drizzle:studio": "npx drizzle-kit studio"
   },
   "dependencies": {
+    "@hono/swagger-ui": "^0.5.2",
+    "@hono/zod-openapi": "^1.1.4",
     "@libsql/client": "^0.15.15",
     "better-auth": "^1.3.34",
     "drizzle-orm": "^0.44.7",
