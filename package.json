@@ -18,6 +18,14 @@
     "pnpm": "10.20.0",
     "npm": "please use pnpm"
   },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "sharp",
+      "unrs-resolver",
+      "esbuild",
+      "workerd"
+    ]
+  },
   "dependencies": {
     "eslint": "^9.39.1",
     "eslint-config-prettier": "^10.1.8",
