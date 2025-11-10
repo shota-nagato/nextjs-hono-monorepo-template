@@ -8,6 +8,13 @@
       "when": 1762689376872,
       "tag": "0000_previous_ares",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1762776707982,
+      "tag": "0001_free_pestilence",
+      "breakpoints": true
     }
   ]
 }

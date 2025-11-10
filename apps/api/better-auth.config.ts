@@ -3,6 +3,7 @@ import { drizzleAdapter } from 'better-auth/adapters/drizzle'
 import { betterAuth } from 'better-auth'
 import { schema } from './src/db/schemas'
 import { betterAuthOptions } from './src/lib/better-auth/options'
+import { admin } from 'better-auth/plugins'
 
 const {
   TURSO_DATABASE_URL,
@@ -27,4 +28,5 @@ export const auth: ReturnType<typeof betterAuth> = betterAuth({
   }),
   baseURL: BETTER_AUTH_URL,
   secret: BETTER_AUTH_SECRET,
+  plugins: [admin()],
 })
