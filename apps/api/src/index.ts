@@ -11,19 +11,23 @@ app.use('/*', corsMiddleware)
 
 app.on(['GET', 'POST'], '/api/v1/auth/*', (c) => auth(c.env).handler(c.req.raw))
 
-app.doc('/doc', {
-  openapi: '3.0.0',
-  info: {
-    title: 'API Documentation',
-    version: '1.0.0',
-  },
-})
+export const routes = app
 
-app.get(
-  '/ui',
-  swaggerUI<{ Bindings: CloudflareBindings }>({
-    url: '/doc',
-  }),
-)
+routes
+  .doc('/api', {
+    openapi: '3.0.0',
+    info: {
+      title: 'API',
+      version: '1.0.0',
+    },
+  })
+  .get(
+    '/docs',
+    swaggerUI<{ Bindings: CloudflareBindings }>({
+      url: '/api',
+    }),
+  )
 
-export default app
+export type ApiType = typeof routes
+
+export default routes
