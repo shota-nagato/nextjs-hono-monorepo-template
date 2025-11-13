@@ -22,6 +22,7 @@ export const auth = (env: CloudflareBindings) => {
     }),
     baseURL: env.BETTER_AUTH_URL,
     secret: env.BETTER_AUTH_SECRET,
+    trustedOrigins: [env.FRONTEND_URL],
     plugins: [admin()],
   })
 }
