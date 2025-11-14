@@ -21,9 +21,20 @@ import {
 import { Input } from '@/components/ui/input'
 import { Loader2 } from 'lucide-react'
 import Link from 'next/link'
+import { useSession } from '@/auth-client'
+import { useRouter } from 'next/navigation'
+import { useEffect } from 'react'
 
 export default function LoginPage() {
   const { isLoading, form, login } = usePasswordLogin()
+  const { data: session, isPending } = useSession()
+  const router = useRouter()
+
+  useEffect(() => {
+    if (!isPending && session?.user) {
+      router.push('/dashboard')
+    }
+  }, [session, isPending, router])
 
   return (
     <div className="bg-muted flex min-h-svh flex-col items-center justify-center gap-6 p-6 md:p-10">
