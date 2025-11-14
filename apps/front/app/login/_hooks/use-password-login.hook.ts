@@ -24,18 +24,28 @@ export function usePasswordLogin() {
 
   const login = async (data: z.infer<typeof schema>) => {
     setIsLoading(true)
-    const result = await signIn.email({
-      email: data.email,
-      password: data.password,
-    })
 
-    if (result?.error) {
-      toast.error(result.error.message || 'ログインに失敗しました')
-      setIsLoading(false)
-    } else {
+    try {
+      const result = await signIn.email({
+        email: data.email,
+        password: data.password,
+      })
+
+      if (result?.error) {
+        toast.error(
+          result.error.status === 500
+            ? 'ログインに失敗しました'
+            : result.error.message,
+        )
+        return
+      }
+
       router.push('/dashboard')
-      setIsLoading(false)
       toast.success('ログインしました')
+    } catch {
+      toast.error('ログインに失敗しました')
+    } finally {
+      setIsLoading(false)
     }
   }
 
