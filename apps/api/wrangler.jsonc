@@ -3,6 +3,7 @@
   "name": "api",
   "main": "src/index.ts",
   "compatibility_date": "2025-11-09",
+  "account_id": "1b303b5cdc0cb68ba1bc88490d8a7e26",
   "env": {
     "production": {
       "name": "api-production",

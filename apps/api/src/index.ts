@@ -12,7 +12,7 @@ const app = new OpenAPIHono<{
 
 // TODO: 環境によってログ設定を変える
 app.use('*', logger())
-app.use('/*', corsMiddleware)
+app.use('/*', (c, next) => corsMiddleware(c.env)(c, next))
 app.use('/api/v1/secret/*', apiKeyAuthMiddleware)
 
 app.on(['GET', 'POST'], '/api/v1/auth/*', (c) => auth(c.env).handler(c.req.raw))
